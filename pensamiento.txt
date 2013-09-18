@@ -1,0 +1,10 @@
+Por el momento tengo funcionando:
+	Lista ( no leekea ) 
+	Parser de argumentos (le falta extension otros modos)
+
+FALTA:
+	Hacer el operador
+	Checkear todos los return value (creo que me falta uno)
+	Hacer los indexadores para cada uno de los modos
+	Hacer el coso que indexe
+	Hacer el coso que busque por lineas de archivo
