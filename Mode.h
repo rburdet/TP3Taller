@@ -7,7 +7,9 @@ class Mode{
 	protected:
 		std::string modeName;
 	public:
-		Format(std::string modeName);
+		Mode(std::string modeName);
+		std::string getMode();
+		
 
 };
 

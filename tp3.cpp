@@ -22,10 +22,12 @@ int main(int argc, char* argv[]){
 	file.open("pruebatex.tex");
 	GenericFileIndexer* anIndexer ;
 	GenericFileIndexer* anIndexer2 ;
-	anIndexer = new TexIndexer("pruebatex.tex",aList);
-	anIndexer2= new HtmlIndexer("pruebahtml.html",aList);
-	anIndexer->indexFile();
-	anIndexer2->indexFile();
+
+
+	//anIndexer = new TexIndexer("pruebatex.tex",aList);
+	//anIndexer2= new HtmlIndexer("pruebahtml.html",aList);
+	//anIndexer->indexFile();
+	//anIndexer2->indexFile();
 	//cout << "busco archivo y me tiene que devolver pruebahtml.html " << aList->searchWord("archivo")->getNextDocument()->getData()<<endl;
 	
 	
@@ -51,11 +53,13 @@ int main(int argc, char* argv[]){
 	//cout << " la que encontre es: "<< aList->searchWord("Palabra1")->getNextDocument()->getNextDocument()->getNextDocument()->getData()<<endl;
 	//cout << " la que encontre es: "<< aList->searchWord("Palabra3")->getNextDocument()->getNextDocument()->getNextDocument()->getData()<<endl;
 //	//cout << "la prosima e: " <<aList->first->getNextDocument()->getData()<<endl; 
-	//value = parseArguments(argc,argv,mode,posQ,posD);
-	//cout <<"el modo es: "<<(int)mode<< "\b posQ es: "<<posQ<<" posD es: "<<posD<<endl;
+	value = parseArguments(argc,argv,mode,posQ,posD);
+	cout <<"el modo es: "<<(int)mode<< "\b posQ es: "<<posQ<<" posD es: "<<posD<<endl;
 	//delete aNode;
-	delete aList;
-	delete anIndexer;
+	//
+	//
+//	delete aList;
+//	delete anIndexer;
 	//delete anotherNode;
 	
 return value;

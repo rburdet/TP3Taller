@@ -7,6 +7,8 @@ GenericFileIndexer::GenericFileIndexer(string fileName,List* indexList){
 	this->redFileName = fileName.substr(0,fileName.find('.'));
 	this->format = fileName.substr(fileName.find('.')+1,fileName.size());
 	(this->file).open(fileName.c_str());
+	if (!file)
+		cerr<<"Error al parsear archivo "<<fileName<<endl;
 	this->indexList = indexList;
 }
 
