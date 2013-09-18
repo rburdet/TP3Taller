@@ -19,6 +19,11 @@ void List::addWord(const string word){
 	}
 }
 
+void List::addDocToEnd(string doc){
+	Node* auxNode = new Node(doc);
+	this->actual->setNextDocument(auxNode);
+}
+
 //para agregar un documento se llamara a 
 //List->addDocument(searchWord(palabra),documento)
 //el doc1 estara en aList->searchWord(string)->getNextDocument()

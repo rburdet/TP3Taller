@@ -14,6 +14,7 @@ class List{
 		~List();
 		//Siempre se agrega al final
 		//Ya sea para agregar un documento o una palabra
+		void addDocToEnd(std::string doc);
 		void addDocument(Node* wordNode,std::string doc);
 		bool wordExistance(const std::string word);
 		void addWord(std::string doc);

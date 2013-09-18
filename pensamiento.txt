@@ -3,6 +3,7 @@ Por el momento tengo funcionando:
 	Parser de argumentos (le falta extension otros modos)
 
 FALTA:
+	Hacer metodos contantes y fijarse que reciban const los q tienen q recibir
 	Hacer el operador
 	Checkear todos los return value (creo que me falta uno)
 	Hacer los indexadores para cada uno de los modos

@@ -14,6 +14,7 @@ void TxtIndexer::indexFile(){
 				//Si la palabra no fue indexada
 				if (this->indexList->searchWord(word)==NULL){
 					this->indexList->addWord(word);
+					this->indexList->addDocToEnd(this->compFileName);
 				}else{
 					//La palabra fue indexada pero no en este documento
 					if (this->indexList->searchDoc(word,this->compFileName) == NULL){
