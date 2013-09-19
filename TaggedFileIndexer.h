@@ -8,7 +8,7 @@ class TaggedFileIndexer : public NormalFileIndexer {
 		char openTag;
 		char closeTag;
 	public: 
-		TaggedFileIndexer(std::string fileName, List* aList) : NormalFileIndexer(fileName, aList){};
+		TaggedFileIndexer(const std::string fileName, List* aList) : NormalFileIndexer(fileName, aList){};
 		virtual void untag(std::string& line);
 		virtual void indexFile();
 };

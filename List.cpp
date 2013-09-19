@@ -19,7 +19,7 @@ void List::addWord(const string word){
 	}
 }
 
-void List::addDocToEnd(string doc){
+void List::addDocToEnd(const string doc){
 	Node* auxNode = new Node(doc);
 	this->actual->setNextDocument(auxNode);
 }
@@ -69,9 +69,6 @@ Node* List::searchDoc(const string word, const string doc){
 	}
 }
 
-bool List::wordExistance(const string word){
-	return (this->searchWord(word)!=NULL);
-}
 
 List::~List(){
 	Node* wordToDestroy;

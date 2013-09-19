@@ -2,8 +2,7 @@
 
 using namespace std;
 
-GenericFileIndexer::GenericFileIndexer(string fileName,List* indexList){
-	this->compFileName = fileName;
+GenericFileIndexer::GenericFileIndexer(const string fileName,List* indexList) : compFileName(fileName){
 	this->redFileName = fileName.substr(0,fileName.find('.'));
 	this->format = fileName.substr(fileName.find('.')+1,fileName.size());
 	(this->file).open(fileName.c_str());
@@ -16,7 +15,7 @@ GenericFileIndexer::~GenericFileIndexer(){
 	(this->file).close();
 }
 
-string GenericFileIndexer::toLower(string in){
+string GenericFileIndexer::toLower(const string in)const{
 	string newOut;
 	int dif = 'a'-'A';
 	char* out = (char*)calloc(1,sizeof(char)*in.size()+1);

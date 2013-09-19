@@ -25,6 +25,7 @@ void TaggedFileIndexer::indexFile(){
 		while (this->file>>rawWord){
 			word = toLower(rawWord);
 			//Le saco los tags
+
 			untag(word);
 			//Si la palabra tiene mas de 4 letras
 			if (isNormalIndexable(word)){

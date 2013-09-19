@@ -6,8 +6,8 @@
 //habiendo otros pueden no cumplir con estos standards
 class NormalFileIndexer: public GenericFileIndexer{
 	public:
-		NormalFileIndexer(std::string fileName,List* aList) : GenericFileIndexer(fileName, aList) {}
-		bool isNormalIndexable(std::string);
+		NormalFileIndexer(const std::string fileName,List* aList) : GenericFileIndexer(fileName, aList) {}
+		bool isNormalIndexable(const std::string)const;
 		virtual void indexFile()=0;
 
 };

@@ -5,7 +5,7 @@
 
 class TxtIndexer : public NormalFileIndexer {
 	public: 
-		TxtIndexer(std::string fileName, List* aList) : NormalFileIndexer(fileName, aList){};
+		TxtIndexer(const std::string fileName, List* aList) : NormalFileIndexer(fileName, aList){};
 		void indexFile();
 };
 

@@ -5,7 +5,7 @@
 
 class TexIndexer : public TaggedFileIndexer {
 	public: 
-		TexIndexer(std::string fileName, List* aList);
+		TexIndexer(const std::string fileName, List* aList);
 };
 
 #endif

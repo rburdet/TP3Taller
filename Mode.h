@@ -5,10 +5,10 @@
 
 class Mode{
 	protected:
-		std::string modeName;
+		const std::string modeName;
 	public:
-		Mode(std::string modeName);
-		std::string getMode();
+		Mode(const std::string name) : modeName(name){};
+		const std::string getMode()const;
 		
 
 };

@@ -2,8 +2,7 @@
 
 using namespace std;
 
-Node::Node(string data){
-	this->data = data;
+Node::Node(const string adata) : data(adata){
 	this->nextDocument=NULL;
 	this->nextWord=NULL;
 }
@@ -12,11 +11,11 @@ Node::~Node(){
 	cout << "borrando: "<<this->data << endl;
 }
 
-Node* Node::getNextDocument(){
+Node* Node::getNextDocument()const{
 	return this->nextDocument;
 }
 
-Node* Node::getNextWord(){
+Node* Node::getNextWord()const{
 	return this->nextWord;
 }
 
@@ -28,6 +27,6 @@ void Node::setNextWord(Node* next){
 	this->nextWord=next;
 }
 
-string Node::getData(){
+const string Node::getData()const {
 	return data;
 }

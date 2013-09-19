@@ -14,14 +14,14 @@ class GenericFileIndexer{
 		std::ifstream file;
 		std::string format;		//Solo lleva la extension (sin el . )
 		std::string redFileName;	// El nombre del archivo sin extension
-		std::string compFileName;	// El nombre del archivo con extension
+		const std::string compFileName;	// El nombre del archivo con extension
 		List* indexList;
 	public:
 		//El estado una vez creado tiene como format a la extension del archivo
 		//a fileName al nombre SIN la extension
 		//y un file descriptor con el archivo abierto
-		GenericFileIndexer(std::string fileName,List* indexList);
-		virtual std::string toLower(std::string inString);
+		GenericFileIndexer(const std::string fileName,List* indexList);
+		virtual std::string toLower(const std::string inString) const;
 		virtual ~GenericFileIndexer();
 		virtual void indexFile()=0;
 };

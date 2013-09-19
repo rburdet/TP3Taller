@@ -5,9 +5,7 @@
 
 class HtmlIndexer : public TaggedFileIndexer {
 	public: 
-		HtmlIndexer(std::string fileName, List* aList);
-		//void indexFile();
-		//void untag(std::string& line);
+		HtmlIndexer(const std::string fileName, List* aList);
 };
 
 #endif

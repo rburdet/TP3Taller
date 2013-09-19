@@ -8,13 +8,13 @@ class Node{
 	private:
 		Node* nextDocument;
 		Node* nextWord;
-		std::string data;
+		const std::string data;
 	public:
-		Node(std::string data);
+		Node(const std::string data);
 		~Node();
-		Node* getNextDocument();
-		Node* getNextWord();
-		std::string getData();
+		Node* getNextDocument()const;
+		Node* getNextWord()const;
+		const std::string getData()const;
 		void setNextWord(Node* next);
 		void setNextDocument(Node* next);
 };

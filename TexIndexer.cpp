@@ -2,7 +2,7 @@
 
 using namespace std;
 
-TexIndexer::TexIndexer(string fileName, List* aList) : TaggedFileIndexer (fileName, aList){
+TexIndexer::TexIndexer(const string fileName, List* aList) : TaggedFileIndexer (fileName, aList){
 	this->openTag='{';
 	this->closeTag='}';
 }
