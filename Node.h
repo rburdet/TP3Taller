@@ -17,6 +17,7 @@ class Node{
 		const std::string getData()const;
 		void setNextWord(Node* next);
 		void setNextDocument(Node* next);
+		bool operator ==(const std::string doc);
 };
 
 #endif

@@ -30,3 +30,7 @@ void Node::setNextWord(Node* next){
 const string Node::getData()const {
 	return data;
 }
+
+bool Node::operator == (const string doc){
+	return (this->getData().compare(doc) == 0);
+}

@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 	//Node* anotherNode = new Node("pelotudo");
 	List* aList = new List();
 	ifstream file;
-	file.open("pruebatex.tex");
+	//file.open("pruebatex.tex");
 	GenericFileIndexer* anIndexer ;
 	GenericFileIndexer* anIndexer2 ;
 

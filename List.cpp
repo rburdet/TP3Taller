@@ -40,7 +40,7 @@ void List::addDocument(Node* wordNode,string doc){
 Node* List::searchWord(const string data){
 	if (this->first==NULL)
 		return NULL;
-	if ( ((this->first->getData()).compare(data)) == 0 )
+	if (*this->first==data )
 		return this->first;
 	else{
 		Node* auxNode = this->first;
@@ -48,23 +48,24 @@ Node* List::searchWord(const string data){
 			auxNode = auxNode->getNextWord();
 			if ( auxNode == NULL )
 				return NULL;
-		}while ( (auxNode->getData().compare(data))!= 0);
+		}while ( !(*auxNode==data));
 		return auxNode;
 	}
 }
+
 
 Node* List::searchDoc(const string word, const string doc){
 	if (this->searchWord(word)==NULL)
 		return NULL;
 	Node* auxNode = this->searchWord(word)->getNextDocument();
-	if ( (auxNode->getData().compare(doc)) == 0 ) 
+	if ((*auxNode==doc))  
 		return (auxNode);
 	else{
 		do{
 			auxNode = auxNode->getNextDocument();
 			if (auxNode == NULL ) 
 				return NULL;
-		}while( ( auxNode->getData().compare(doc) )!= 0 );
+		}while( !(*auxNode==doc) );
 		return auxNode;
 	}
 }
