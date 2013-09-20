@@ -15,7 +15,7 @@ GenericFileIndexer::~GenericFileIndexer(){
 	(this->file).close();
 }
 
-string GenericFileIndexer::toLower(const string in)const{
+string GenericFileIndexer::toLower(const string in){
 	string newOut;
 	int dif = 'a'-'A';
 	char* out = (char*)calloc(1,sizeof(char)*in.size()+1);
