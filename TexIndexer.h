@@ -5,7 +5,10 @@
 
 class TexIndexer : public TaggedFileIndexer {
 	public: 
-		TexIndexer(const std::string fileName, List* aList);
+		TexIndexer(const std::string fileName, List* aList) : TaggedFileIndexer (fileName, aList){
+			this->openTag='{';
+			this->closeTag='}';
+		}
 };
 
 #endif

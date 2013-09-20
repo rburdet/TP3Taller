@@ -5,10 +5,10 @@
 #include "Parser.h"
 #include "List.h"
 #include "GenericFileIndexer.h"
-#include "TxtIndexer.h"
-#include "HtmlIndexer.h"
-#include "TexIndexer.h"
-
+//#include "TxtIndexer.h"
+//#include "HtmlIndexer.h"
+//#include "TexIndexer.h"
+#include "Factory.h"
 using namespace std;
 
 int main(int argc, char* argv[]){
@@ -24,8 +24,10 @@ int main(int argc, char* argv[]){
 	GenericFileIndexer* anIndexer2 ;
 
 
-	anIndexer = new TexIndexer("pruebatex.tex",aList);
-	anIndexer2= new HtmlIndexer("pruebahtml.html",aList);
+	//anIndexer = new TexIndexer("pruebatex.tex",aList);
+	anIndexer = Factory::createIndexer("pruebatex.tex",aList);
+	anIndexer2 = Factory::createIndexer("pruebahtml.html",aList);
+	//anIndexer2= new HtmlIndexer("pruebahtml.html",aList);
 	anIndexer->indexFile();
 	anIndexer2->indexFile();
 	cout << "busco archivo y me tiene que devolver pruebahtml.html " << aList->searchWord("archivo")->getNextDocument()->getData()<<endl;

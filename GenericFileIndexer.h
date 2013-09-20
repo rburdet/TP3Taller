@@ -21,7 +21,7 @@ class GenericFileIndexer{
 		//a fileName al nombre SIN la extension
 		//y un file descriptor con el archivo abierto
 		GenericFileIndexer(const std::string fileName,List* indexList);
-		virtual std::string toLower(const std::string inString) const;
+		static std::string toLower(const std::string inString);
 		virtual ~GenericFileIndexer();
 		virtual void indexFile()=0;
 };
