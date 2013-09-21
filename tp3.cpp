@@ -6,9 +6,6 @@
 #include "Parser.h"
 #include "List.h"
 #include "GenericFileIndexer.h"
-#include "TxtIndexer.h"
-//#include "HtmlIndexer.h"
-//#include "TexIndexer.h"
 #include "Factory.h"
 using namespace std;
 
