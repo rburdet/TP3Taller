@@ -9,7 +9,7 @@ Node::Node(const string adata) : data(adata){
 }
 
 Node::~Node(){
-	cout << "borrando: "<<this->data << endl;
+	//cout << "borrando: "<<this->data << endl;
 }
 
 Node* Node::getNextDocument()const{

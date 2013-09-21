@@ -77,21 +77,39 @@ void List::markWord(const string word){
 }
 
 void List::markDocuments(){
-	Node* aDocNode;
-	Node* aWordNode = this->first;
-	Node* nextWord = this->first->getNextWord();
-	while (aWordNode->getNextWord() != NULL ){
-		if (aWordNode->isMarked()){
-			while ((aDocNode=aWordNode->getNextDocument()) != NULL){
-				if (aDocNode->isMarked()){
-					while ((nextWord=aWordNode->getNextWord()) != NULL)
-						if (nextWord->isMarked()){
-							//while 
+	Node* outW;		//outWord 
+	Node* inW;		//inWord
+	Node* outD;		//outDoc
+	Node* inD;		//inDoc
+	for (outW=this->first ; outW!=NULL; outW = outW->getNextWord() ){
+		if (outW->isMarked())
+			for (outD = outW->getNextDocument() ; outD != NULL ; outD = outD->getNextDocument()) {
+				for ( inW = outW ; inW != NULL ; inW = inW->getNextWord() ){
+					if (inW->isMarked())
+						for ( inD = inW->getNextDocument() ; inD != NULL ; inD = inD->getNextDocument()) {
+							if (outD->getData() == inD->getData()){
+								if(outW->getData() != inW->getData()){
+									outD->markNode();
+									inD->markNode();
+								}
+							}
 						}
 				}
 			}
+	}
+}
+
+void List::printMarkedDocuments(){
+	Node* wordNode;
+	Node* docNode;
+	for ( wordNode = this->first ; wordNode != NULL ; wordNode=wordNode->getNextWord()){
+		if (wordNode->isMarked())
+		for ( docNode = wordNode->getNextDocument() ; docNode != NULL ; docNode = docNode->getNextDocument()){
+			if (docNode->isMarked())
+				cout << docNode->getData()<<endl;
 		}
 	}
+
 }
 
 List::~List(){

@@ -9,6 +9,8 @@ Por el momento tengo funcionando:
 FALTA:
 	Hacer el coso que indexe
 	Hacer el coso que busque por lineas de archivo
+	NO OLVIDARME QUE LOS MIEMBROS DE LIST DEBEN SER PRIVADOS !! 
+	Borrar comentarios
 
 
 COMO HACER EL Search():

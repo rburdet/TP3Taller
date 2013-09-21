@@ -22,38 +22,64 @@ int main(int argc, char* argv[]){
 	GenericFileIndexer* anIndexer2 ;
 	GenericFileIndexer* anIndexer3;
 
-	anIndexer = Factory::createIndexer("pruebatex.tex",aList);
-	anIndexer2 = Factory::createIndexer("pruebahtml.html",aList);
-	anIndexer3 = Factory::createIndexer("pruebatxt.txt",aList);
+	anIndexer = Factory::createIndexer("text.txt",aList);
+	anIndexer2 = Factory::createIndexer("latextext.tex",aList);
+	anIndexer3 = Factory::createIndexer("htmltext.html",aList);
 
 	anIndexer->indexFile();
 	anIndexer2->indexFile();
 	anIndexer3->indexFile();
 
+	
 	//cout << "busco archivo y me tiene que devolver pruebahtml.html " << aList->searchWord("archivo")->getNextDocument()->getData()<<endl;
 	//cout << "la lista en first tiene : "<< aList->first->getData()<<endl;
 		
 	//PRUEBA DE ITERACION SOBRE LISTA 
 	Node* aux;
 	Node* aux2;
-	Node* aux3;
-	Node* aux4;
-	//aList->markWord("comunes");
-	//aList->markWord("palabras");
-	aList->markWord("archivos");
-	for (aux=aList->first ; aux!=NULL; aux = aux->getNextWord() ){
-		if (aux->isMarked())
-			for (aux2 = aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument()) {
-				for ( aux3 = aux ; aux3 != NULL ; aux3 = aux3->getNextWord() ){
-					if (aux3->isMarked())
-						for ( aux4 = aux3->getNextDocument() ; aux4 != NULL ; aux4 = aux4->getNextDocument()) {
-							//if (aux2->getData()==aux4->getData())
-								//if(aux3->getData()==aux->getData())
-									cout << "aux1: " <<aux->getData() <<setw(20)<<"aux2: "<<aux2->getData()<<setw(20)<<"aux3: "<<aux3->getData()<<setw(20)<<"aux4: "<<aux4->getData()<<endl;
-						}
-				}
-			}
-	}	
+
+	//Node* aux3;
+	//Node* aux4;
+
+
+	//Imprimir lista:
+	for ( aux=aList->first ; aux!= NULL ; aux = aux->getNextWord() ){
+		cout << setw(15)<<aux->getData() << " -> " ;
+		for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
+			cout << setw(10) << aux2->getData() << " -> " ;
+		}
+		cout <<endl<<setw(15)<< "|"<< endl;
+	}
+
+	printf("\n\n\n\n");
+
+
+	aList->markWord("archivo");
+	aList->markWord("palabras");
+	aList->markDocuments();
+	aList->printMarkedDocuments();
+
+	//for (aux=aList->first ; aux!=NULL; aux = aux->getNextWord() ){
+	//	if (aux->isMarked())
+	//		for (aux2 = aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument()) {
+	//			for ( aux3 = aux ; aux3 != NULL ; aux3 = aux3->getNextWord() ){
+	//				if (aux3->isMarked())
+	//					for ( aux4 = aux3->getNextDocument() ; aux4 != NULL ; aux4 = aux4->getNextDocument()) {
+	//						//cout<<"fijo: "<<aux->getData()<< "-> " <<aux2->getData() << endl;
+	//						//cout << "movil: "<<aux3->getData()<<"-> " << aux4->getData()<<endl;
+	//						//cout << endl;
+	//						if (aux2->getData() == aux4->getData()){
+	//							if (aux->getData() != aux3->getData()){
+	//							cout<<"fijo: "<<aux->getData()<< "-> " <<aux2->getData() << endl;
+	//							cout << "movil: "<<aux3->getData()<<"-> " << aux4->getData()<<endl;
+	//							cout << "matchean"<<endl;
+	//							}
+	//						}
+	//						
+	//					}
+	//			}
+	//		}
+	//}	
 	
 	//Pruebas de la lista ::
 	//FUNCIONA
