@@ -3,7 +3,7 @@
 GenericFileIndexer* Factory::createIndexer(std::string fileName,List* list){
 	GenericFileIndexer* mySon;
 	std::string extension = fileName.substr(fileName.find('.')+1,fileName.size());
-	if (extension.compare(GenericFileIndexer::toLower("Txt"))==1)
+	if (extension.compare(GenericFileIndexer::toLower("Txt"))==0)
 		mySon = new TxtIndexer(fileName,list);
 	else if (extension.compare(GenericFileIndexer::toLower("Tex"))==0)
 		mySon = new TexIndexer(fileName,list);

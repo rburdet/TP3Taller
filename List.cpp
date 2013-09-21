@@ -70,6 +70,29 @@ Node* List::searchDoc(const string word, const string doc){
 	}
 }
 
+void List::markWord(const string word){
+	Node* auxNode;
+	if ((auxNode=this->searchWord(word))!=NULL)
+		auxNode->markNode();
+}
+
+void List::markDocuments(){
+	Node* aDocNode;
+	Node* aWordNode = this->first;
+	Node* nextWord = this->first->getNextWord();
+	while (aWordNode->getNextWord() != NULL ){
+		if (aWordNode->isMarked()){
+			while ((aDocNode=aWordNode->getNextDocument()) != NULL){
+				if (aDocNode->isMarked()){
+					while ((nextWord=aWordNode->getNextWord()) != NULL)
+						if (nextWord->isMarked()){
+							//while 
+						}
+				}
+			}
+		}
+	}
+}
 
 List::~List(){
 	Node* wordToDestroy;

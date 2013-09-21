@@ -5,6 +5,7 @@ using namespace std;
 Node::Node(const string adata) : data(adata){
 	this->nextDocument=NULL;
 	this->nextWord=NULL;
+	this->marked=false;
 }
 
 Node::~Node(){
@@ -33,4 +34,12 @@ const string Node::getData()const {
 
 bool Node::operator == (const string doc){
 	return (this->getData().compare(doc) == 0);
+}
+
+void Node::markNode(){
+	this->marked=true;
+}
+
+bool Node::isMarked(){
+	return (this->marked);
 }
