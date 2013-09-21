@@ -43,3 +43,7 @@ void Node::markNode(){
 bool Node::isMarked(){
 	return (this->marked);
 }
+
+void Node::unmarkNode(){
+	this->marked=false;
+}

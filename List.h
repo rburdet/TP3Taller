@@ -34,6 +34,10 @@ class List{
 		void markDocuments();
 		//Imprime los documetnos marcados
 		void printMarkedDocuments();
+		//Pone la lista en el estado inicial (todo desmarcado)
+		void unmarkAll();
+		//Si solo tengo que buscar una palabra tengo que imprimir solo sus documentos
+		void printDocuments(const std::string word);
 };
 
 #endif

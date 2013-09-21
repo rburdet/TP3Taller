@@ -91,6 +91,7 @@ void List::markDocuments(){
 								if(outW->getData() != inW->getData()){
 									outD->markNode();
 									inD->markNode();
+									cout << inD ->getData()<<endl;
 								}
 							}
 						}
@@ -110,6 +111,27 @@ void List::printMarkedDocuments(){
 		}
 	}
 
+}
+void List::unmarkAll(){
+	Node* wordNode;
+	Node* docNode;
+	for ( wordNode = this->first ; wordNode != NULL ; wordNode = wordNode->getNextWord()){
+		for (docNode = wordNode->getNextDocument() ; docNode!=NULL ; docNode = docNode->getNextDocument()){
+			docNode->unmarkNode();
+		}
+		wordNode->unmarkNode();
+	}
+}
+
+void List::printDocuments(const string word){
+	cout << "busqueda:"<<word<<"\""<<endl;
+	Node* wordNode = this->searchWord(word);
+	if (wordNode!=NULL){
+		Node* auxNode;
+		for ( auxNode= wordNode->getNextDocument() ; auxNode!=NULL ; auxNode = auxNode->getNextDocument() ){
+			cout<<auxNode->getData()<<endl;
+		}
+	}
 }
 
 List::~List(){

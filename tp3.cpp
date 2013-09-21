@@ -7,29 +7,35 @@
 #include "List.h"
 #include "GenericFileIndexer.h"
 #include "Factory.h"
+#include "Searcher.h"
+#include "Indexer.h"
+
 using namespace std;
 
 int main(int argc, char* argv[]){
 	int value;
 	char mode;
 	int posQ,posD;
-	//Node* aNode = new Node("pepe");
-	//Node* anotherNode = new Node("pelotudo");
 	List* aList = new List();
-	ifstream file;
-	//file.open("pruebatex.tex");
-	GenericFileIndexer* anIndexer ;
-	GenericFileIndexer* anIndexer2 ;
-	GenericFileIndexer* anIndexer3;
+	value = parseArguments(argc,argv,mode,posQ,posD);
+	cout <<"el modo es: "<<(int)mode<< "\b posQ es: "<<posQ<<" posD es: "<<posD<<endl;
+	if (value)
+		return value;
+	Indexer* indexer = new Indexer(string(argv[posD]),aList);
+	indexer->index();
 
-	anIndexer = Factory::createIndexer("text.txt",aList);
-	anIndexer2 = Factory::createIndexer("latextext.tex",aList);
-	anIndexer3 = Factory::createIndexer("htmltext.html",aList);
+	//cout << indexer->getFileToIndex() << endl;
+	//GenericFileIndexer* anIndexer ;
+	//GenericFileIndexer* anIndexer2 ;
+	//GenericFileIndexer* anIndexer3;
+	//anIndexer = Factory::createIndexer("PROBANDO/text.txt",aList);
+	//anIndexer2 = Factory::createIndexer("PROBANDO/latextext.tex",aList);
+	//anIndexer3 = Factory::createIndexer("PROBANDO/htmltext.html",aList);
+	Searcher* searcher = new Searcher(argv[posQ],aList);
 
-	anIndexer->indexFile();
-	anIndexer2->indexFile();
-	anIndexer3->indexFile();
-
+	//anIndexer->indexFile();
+	//anIndexer2->indexFile();
+	//anIndexer3->indexFile();
 	
 	//cout << "busco archivo y me tiene que devolver pruebahtml.html " << aList->searchWord("archivo")->getNextDocument()->getData()<<endl;
 	//cout << "la lista en first tiene : "<< aList->first->getData()<<endl;
@@ -52,12 +58,13 @@ int main(int argc, char* argv[]){
 	}
 
 	printf("\n\n\n\n");
+	searcher->search();
+	printf("\n\n\n\n");
 
-
-	aList->markWord("archivo");
-	aList->markWord("palabras");
-	aList->markDocuments();
-	aList->printMarkedDocuments();
+	//aList->markWord("texto");
+	//aList->markWord("libre");
+	//aList->markDocuments();
+	//aList->printMarkedDocuments();
 
 	//for (aux=aList->first ; aux!=NULL; aux = aux->getNextWord() ){
 	//	if (aux->isMarked())
@@ -103,11 +110,13 @@ int main(int argc, char* argv[]){
 	//cout << " la que encontre es: "<< aList->searchWord("Palabra1")->getNextDocument()->getNextDocument()->getNextDocument()->getData()<<endl;
 	//cout << " la que encontre es: "<< aList->searchWord("Palabra3")->getNextDocument()->getNextDocument()->getNextDocument()->getData()<<endl;
 //	//cout << "la prosima e: " <<aList->first->getNextDocument()->getData()<<endl; 
-	value = parseArguments(argc,argv,mode,posQ,posD);
 	//cout <<"el modo es: "<<(int)mode<< "\b posQ es: "<<posQ<<" posD es: "<<posD<<endl;
 	printf("\n\n\n\n");
 	delete aList;
-	delete anIndexer;
+	delete indexer;
+	//delete anIndexer;
+	//delete anIndexer2;
+	//delete anIndexer3;
 	//delete anotherNode;
 	
 return value;

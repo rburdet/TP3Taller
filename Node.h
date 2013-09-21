@@ -38,6 +38,8 @@ class Node{
 		void markNode();
 		//POST: Devuelve true si esta marcado, false en otro caso
 		bool isMarked();
+		//POST: desmarcado el nodo
+		void unmarkNode();
 };
 
 #endif

@@ -5,12 +5,25 @@ Por el momento tengo funcionando:
 	Hacer el operador
 	Checkear todos los return value (creo que me falta uno)
 	Hacer los indexadores para cada uno de los modos
+	El interseccionador de documentos anda, o sea que para busquedas de mas de 1 palabra ya anda
+	indexador
 
 FALTA:
-	Hacer el coso que indexe
 	Hacer el coso que busque por lineas de archivo
 	NO OLVIDARME QUE LOS MIEMBROS DE LIST DEBEN SER PRIVADOS !! 
 	Borrar comentarios
+	El metodo imprimir no tiene en cuenta que esta imprimiendo 2 veces el mismo nodo
+	vincular el searcher con el marcador de palabras y el impresor 
+	si es una sola palabra la que tengo que buscar no deberia tener que hacer una interseccion, o al menos esta tendria q andar
+	tengo que hacer un indexador por cada archivo que se ingres por liena de comando
+	
+COMO HACER:
+	Por cada archivo del -d, tengo que crear un indexador e indexar
+	El searcher va a ser creado con un documento de queries, y una lista.
+
+
+
+
 
 
 COMO HACER EL Search():
