@@ -7,27 +7,27 @@ Por el momento tengo funcionando:
 	Hacer los indexadores para cada uno de los modos
 	El interseccionador de documentos anda, o sea que para busquedas de mas de 1 palabra ya anda
 	indexador
-
-FALTA:
 	Hacer el coso que busque por lineas de archivo
-	NO OLVIDARME QUE LOS MIEMBROS DE LIST DEBEN SER PRIVADOS !! 
-	Borrar comentarios
 	El metodo imprimir no tiene en cuenta que esta imprimiendo 2 veces el mismo nodo
 	vincular el searcher con el marcador de palabras y el impresor 
 	si es una sola palabra la que tengo que buscar no deberia tener que hacer una interseccion, o al menos esta tendria q andar
 	tengo que hacer un indexador por cada archivo que se ingres por liena de comando
-	
-COMO HACER:
-	Por cada archivo del -d, tengo que crear un indexador e indexar
-	El searcher va a ser creado con un documento de queries, y una lista.
 
+FALTA:
+	NO OLVIDARME QUE LOS MIEMBROS DE LIST DEBEN SER PRIVADOS !! 
+	Borrar comentarios
+		
+	TESTEAR EL CASO EN QUE PASO UN ARCHIVO QUE NO EXISTE Y OTRO QUE NO TIENE FORMATO SOPORTADO
 
-
-
-
-
-COMO HACER EL Search():
-
-	Por cada linea del archivo de busquedas: agarro una palabra (voy a tener en una linea una o mas palabras)
-	marco las palabras en la lista como palabras interesantes
-	recorro la lista, para las palabras marcadas, marco los documentos que estan en esas palabras
+PRUEBAS:
+																																rv							link	estado 	
+CP11pruebasTags	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries.txt											0	Entradas    Salidas     324		paso		
+CP1resumenArchivo	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries.txt										0	Entradas    Salidas		314		paso
+CP2faltaArgumento	./tp																										2			    Salidas		315		paso
+CP3faltaListaDocs	./tp -m completo -d																							2	    	    Salidas		316		paso
+CP4noExisteQueries	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q noexiste.txt										1	Entradas    Salidas		317		paso
+CP5noExistenOFormatoDocs	./tp -d otroformato.fmt,noexiste.txt -q queries.txt													0	Entradas    Salidas		318		paso
+CP6queriesSinResultado	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries2.txt									0	Entradas    Salidas		319		
+CP7completo	./tp -m completo -d text2.txt,latextext2.tex,htmltext.html -q queriescompleto.txt									0	Entradas    Salidas		320		
+CP8resumenStdin	./tp -m resumen -d text.txt,latextext.tex,htmltext.html															0	Entradas    Salidas		321		
+CP9completoCombinado	./tp -d text2.txt,noexiste.txt,latextext2.tex,otroformato.fmt,htmltext.html -q queriescombinado.txt		0	Entradas    Salidas		322		

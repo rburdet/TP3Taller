@@ -15,6 +15,10 @@ GenericFileIndexer::~GenericFileIndexer(){
 	(this->file).close();
 }
 
+bool GenericFileIndexer::isOpen(){
+	return (file.is_open());
+}
+
 string GenericFileIndexer::toLower(const string in){
 	string newOut;
 	int dif = 'a'-'A';

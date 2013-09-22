@@ -1,4 +1,5 @@
 #include "Searcher.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -12,16 +13,12 @@ int Searcher::search()const{
 	ifstream inputFile;
 	istream* in = &cin;
 	int numberOfWords; 
-	Node* node1;
-	Node* node2;
 	bool needToCloseFile=false;
-	bool match=false;
 	//Si tengo un archivo intento abrirlo
 	if (this->fileName!=""){
 		inputFile.open(this->fileName.c_str());
 		//Si no lo pude abrir
 		if (!inputFile.good()){
-			cerr << "Error al parsear archivo en searcher: "<<this->fileName<<endl;
 			return 1;
 		}else{
 			in = &inputFile;
@@ -41,7 +38,23 @@ int Searcher::search()const{
 		if (numberOfWords>1){
 			cout<<"busqueda:\""<<line<<"\""<<endl;
 			this->anIndexList->markDocuments();
-			//this->anIndexList->printMarkedDocuments();
+
+		printf("\n\n\n\n\n");
+			Node* aux;
+			Node* aux2;
+
+		//Imprimir lista:
+		for ( aux=anIndexList->first ; aux!= NULL ; aux = aux->getNextWord() ){
+			if (aux->isMarked()){
+				cout << setw(15)<<aux->getData() << " -> " ;
+				for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
+					if (aux2->isMarked())
+						cout << setw(10) << aux2->getData() << " -> " ;
+				}
+				cout <<endl<<setw(15)<< "|"<< endl;
+			}
+		}	
+		//this->anIndexList->printMarkedDocuments();
 			this->anIndexList->unmarkAll();
 		}else{
 			this->anIndexList->printDocuments(word);

@@ -13,7 +13,8 @@ void Indexer::index(){
 		file = getFileToIndex();
 		if (file!=""){
 			GenericFileIndexer* anIndexer = Factory::createIndexer(file,indexList);
-			anIndexer->indexFile();
+			if (anIndexer!=NULL)
+				anIndexer->indexFile();
 			delete anIndexer;
 		}
 	}while (file.size()!=0);
@@ -23,7 +24,6 @@ void Indexer::index(){
 string Indexer::getFileToIndex(){
 	string actual;
 	size_t actualPos = files.find(',');
-	size_t nextPos = files.find(',',actualPos);
 	actual = "";
 	if (this->files.size()>0){
 		actual = files.substr(0,actualPos);

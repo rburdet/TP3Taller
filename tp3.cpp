@@ -42,24 +42,25 @@ int main(int argc, char* argv[]){
 	//cout << "la lista en first tiene : "<< aList->first->getData()<<endl;
 		
 	//PRUEBA DE ITERACION SOBRE LISTA 
+	
+
 	Node* aux;
 	Node* aux2;
-
 	//Node* aux3;
 	//Node* aux4;
 
 
 	//Imprimir lista:
-	//for ( aux=aList->first ; aux!= NULL ; aux = aux->getNextWord() ){
-	//	cout << setw(15)<<aux->getData() << " -> " ;
-	//	for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
-	//		cout << setw(10) << aux2->getData() << " -> " ;
-	//	}
-	//	cout <<endl<<setw(15)<< "|"<< endl;
-	//}
+	for ( aux=aList->first ; aux!= NULL ; aux = aux->getNextWord() ){
+		cout << setw(15)<<aux->getData() << " -> " ;
+		for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
+			cout << setw(10) << aux2->getData() << " -> " ;
+		}
+		cout <<endl<<setw(15)<< "|"<< endl;
+	}
 
-	//printf("\n\n\n\n");
-	searcher->search();
+	printf("\n\n\n\n");
+	value = searcher->search();
 	//printf("\n\n\n\n");
 
 	//aList->markWord("texto");

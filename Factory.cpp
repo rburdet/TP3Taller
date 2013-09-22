@@ -1,7 +1,7 @@
 #include "Factory.h"
 
 GenericFileIndexer* Factory::createIndexer(std::string fileName,List* list){
-	GenericFileIndexer* mySon;
+	GenericFileIndexer* mySon = NULL;
 	std::string extension = fileName.substr(fileName.find('.')+1,fileName.size());
 	if (extension.compare(GenericFileIndexer::toLower("Txt"))==0)
 		mySon = new TxtIndexer(fileName,list);
@@ -10,8 +10,10 @@ GenericFileIndexer* Factory::createIndexer(std::string fileName,List* list){
 	else if (extension.compare(GenericFileIndexer::toLower("Html"))==0)
 		mySon = new HtmlIndexer(fileName,list);
 	else{
-		//std::cerr << "Error al parsear archivo factory: "<<fileName << std::endl;
+		std::cerr << "Error al parsear archivo: "<<fileName << std::endl;
 		mySon=NULL;
 	}
+	if ( (mySon!=NULL) && (!(mySon->isOpen())) )
+		mySon=NULL;
 	return mySon;
 }

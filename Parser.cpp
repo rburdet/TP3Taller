@@ -6,7 +6,6 @@ using namespace std;
 //tener en cuenta extension de modos a otros modos
 char parseArguments(int argc, char* argv[],char &mode,int &posOfQ,int &posOfd){
 	int i,j;
-	char aux;
 	posOfQ=-1;
 	posOfd=-1;
 	string modeName;
@@ -20,7 +19,6 @@ char parseArguments(int argc, char* argv[],char &mode,int &posOfQ,int &posOfd){
 					mode = 1;
 					modeName=string(argv[i+1]);
 					if (argv[i+1][0]!='-'){ 
-						printf("entre aca \n");
 							mode = 2;
 					}
 				}
