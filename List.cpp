@@ -124,7 +124,7 @@ void List::unmarkAll(){
 }
 
 void List::printDocuments(const string word){
-	cout << "busqueda:"<<word<<"\""<<endl;
+	cout << "busqueda:\""<<word<<"\""<<endl;
 	Node* wordNode = this->searchWord(word);
 	if (wordNode!=NULL){
 		Node* auxNode;

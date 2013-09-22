@@ -23,8 +23,6 @@ int main(int argc, char* argv[]){
 		return value;
 	Indexer* indexer = new Indexer(string(argv[posD]),aList);
 	indexer->index();
-
-	//cout << indexer->getFileToIndex() << endl;
 	//GenericFileIndexer* anIndexer ;
 	//GenericFileIndexer* anIndexer2 ;
 	//GenericFileIndexer* anIndexer3;
