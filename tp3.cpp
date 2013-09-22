@@ -17,8 +17,9 @@ int main(int argc, char* argv[]){
 	char mode;
 	int posQ,posD;
 	List* aList = new List();
+	string queries = "";
 	value = parseArguments(argc,argv,mode,posQ,posD);
-	cout <<"el modo es: "<<(int)mode<< "\b posQ es: "<<posQ<<" posD es: "<<posD<<endl;
+	//cout <<"el modo es: "<<(int)mode<< "\b posQ es: "<<posQ<<" posD es: "<<posD<<endl;
 	if (value)
 		return value;
 	Indexer* indexer = new Indexer(string(argv[posD]),aList);
@@ -29,7 +30,9 @@ int main(int argc, char* argv[]){
 	//anIndexer = Factory::createIndexer("PROBANDO/text.txt",aList);
 	//anIndexer2 = Factory::createIndexer("PROBANDO/latextext.tex",aList);
 	//anIndexer3 = Factory::createIndexer("PROBANDO/htmltext.html",aList);
-	Searcher* searcher = new Searcher(argv[posQ],aList);
+	if (posQ>1)
+		queries=string(argv[posQ]);
+	Searcher* searcher = new Searcher(queries,aList);
 
 	//anIndexer->indexFile();
 	//anIndexer2->indexFile();
@@ -47,45 +50,23 @@ int main(int argc, char* argv[]){
 
 
 	//Imprimir lista:
-	for ( aux=aList->first ; aux!= NULL ; aux = aux->getNextWord() ){
-		cout << setw(15)<<aux->getData() << " -> " ;
-		for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
-			cout << setw(10) << aux2->getData() << " -> " ;
-		}
-		cout <<endl<<setw(15)<< "|"<< endl;
-	}
+	//for ( aux=aList->first ; aux!= NULL ; aux = aux->getNextWord() ){
+	//	cout << setw(15)<<aux->getData() << " -> " ;
+	//	for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
+	//		cout << setw(10) << aux2->getData() << " -> " ;
+	//	}
+	//	cout <<endl<<setw(15)<< "|"<< endl;
+	//}
 
-	printf("\n\n\n\n");
+	//printf("\n\n\n\n");
 	searcher->search();
-	printf("\n\n\n\n");
+	//printf("\n\n\n\n");
 
 	//aList->markWord("texto");
 	//aList->markWord("libre");
 	//aList->markDocuments();
 	//aList->printMarkedDocuments();
 
-	//for (aux=aList->first ; aux!=NULL; aux = aux->getNextWord() ){
-	//	if (aux->isMarked())
-	//		for (aux2 = aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument()) {
-	//			for ( aux3 = aux ; aux3 != NULL ; aux3 = aux3->getNextWord() ){
-	//				if (aux3->isMarked())
-	//					for ( aux4 = aux3->getNextDocument() ; aux4 != NULL ; aux4 = aux4->getNextDocument()) {
-	//						//cout<<"fijo: "<<aux->getData()<< "-> " <<aux2->getData() << endl;
-	//						//cout << "movil: "<<aux3->getData()<<"-> " << aux4->getData()<<endl;
-	//						//cout << endl;
-	//						if (aux2->getData() == aux4->getData()){
-	//							if (aux->getData() != aux3->getData()){
-	//							cout<<"fijo: "<<aux->getData()<< "-> " <<aux2->getData() << endl;
-	//							cout << "movil: "<<aux3->getData()<<"-> " << aux4->getData()<<endl;
-	//							cout << "matchean"<<endl;
-	//							}
-	//						}
-	//						
-	//					}
-	//			}
-	//		}
-	//}	
-	
 	//Pruebas de la lista ::
 	//FUNCIONA
 	//aList->addWord("Palabra1");
@@ -109,7 +90,6 @@ int main(int argc, char* argv[]){
 	//cout << " la que encontre es: "<< aList->searchWord("Palabra3")->getNextDocument()->getNextDocument()->getNextDocument()->getData()<<endl;
 //	//cout << "la prosima e: " <<aList->first->getNextDocument()->getData()<<endl; 
 	//cout <<"el modo es: "<<(int)mode<< "\b posQ es: "<<posQ<<" posD es: "<<posD<<endl;
-	printf("\n\n\n\n");
 	delete aList;
 	delete indexer;
 	//delete anIndexer;

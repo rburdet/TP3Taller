@@ -10,7 +10,7 @@ GenericFileIndexer* Factory::createIndexer(std::string fileName,List* list){
 	else if (extension.compare(GenericFileIndexer::toLower("Html"))==0)
 		mySon = new HtmlIndexer(fileName,list);
 	else{
-		std::cerr << "Error al parsear archivo: "<<fileName << std::endl;
+		//std::cerr << "Error al parsear archivo factory: "<<fileName << std::endl;
 		mySon=NULL;
 	}
 	return mySon;

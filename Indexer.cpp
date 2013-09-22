@@ -11,7 +11,6 @@ void Indexer::index(){
 	string file;
 	do{
 		file = getFileToIndex();
-		cout << file << endl;
 		if (file!=""){
 			GenericFileIndexer* anIndexer = Factory::createIndexer(file,indexList);
 			anIndexer->indexFile();
