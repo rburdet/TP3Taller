@@ -81,23 +81,90 @@ void List::markDocuments(){
 	Node* inW;		//inWord
 	Node* outD;		//outDoc
 	Node* inD;		//inDoc
+	string files;
+	bool needMark;
+	//Para cada palabra
 	for (outW=this->first ; outW!=NULL; outW = outW->getNextWord() ){
+		//Si la estoy buscando
 		if (outW->isMarked())
+			//Para cada documento
 			for (outD = outW->getNextDocument() ; outD != NULL ; outD = outD->getNextDocument()) {
+				//Si esta marcado es porque ya lo encontre antes
+				needMark=false;
+				if (!outD->isMarked())
+				//Palabra a buscar 
 				for ( inW = outW ; inW != NULL ; inW = inW->getNextWord() ){
-					if (inW->isMarked())
+					//if (inW->isMarked())
+						//Documento a comparar
 						for ( inD = inW->getNextDocument() ; inD != NULL ; inD = inD->getNextDocument()) {
 							if (outD->getData() == inD->getData()){
-								if(outW->getData() != inW->getData()){
-									outD->markNode();
-									inD->markNode();
-									cout << inD ->getData()<<endl;
-								}
+								needMark=true;
+								//inD->markNode();
+								//if(outW->getData() != inW->getData()){
+									//cout << "puedo agregar : " << outD->getData() << " o el in: " << inD->getData() << endl;
+//									if (files.find_first_of(outD->getData())==string::npos){
+//										files.append(outD->getData());
+//										files.insert(files.end(),';');
+									//}
+								//}
 							}
 						}
 				}
+				if (needMark){
+					//outD->markNode();
+					cout << outD->getData() << endl;
+				}
 			}
 	}
+}
+
+string List::fillIntersecter(){
+	Node* wordNode;
+	Node* docNode;
+	string docs;
+	for ( wordNode=this->first ; wordNode!= NULL ; wordNode = wordNode->getNextWord() ){
+		if (wordNode->isMarked()){
+			for ( docNode=wordNode->getNextDocument() ; docNode != NULL ; docNode = docNode->getNextDocument() ){
+					docs.append(docNode->getData());
+					docs.insert(docs.end(),',');
+			}
+		}
+	}
+	if (docs.size()>0)
+		docs.erase(docs.size()-1);
+	return docs;
+}
+
+void List::intersect(int numberOfWords,string &docs){
+	int fpos,wpos,npos;
+	string adoc;
+	string aux = docs;
+	while(aux.size()>0){
+		int times=1;
+		fpos=aux.find(',');
+		if (fpos != string::npos){
+			adoc = aux.substr(0,fpos);
+			npos=fpos;
+		}
+		else{
+			break;
+			//adoc = aux.substr(0,aux.size());
+			//npos=aux.size();
+		}
+		//cout << "adoc: " <<adoc<<endl;
+		//cout << "\t aux: \t" << aux << endl;
+		while ( ( wpos=aux.find(adoc,npos)) !=string::npos){
+			times++;
+			npos = aux.find(',',wpos);
+			//cout << "\t times: "<<times <<"\t npos: "<<npos<<"\t wpos: "<<wpos<<"\t aux: "<<aux<<endl;
+			aux.erase(wpos,npos-wpos+1);
+		}
+		if (fpos != string::npos)
+			aux.erase(0,fpos+1);
+		if (times == numberOfWords)
+			cout << adoc << endl;
+	}
+
 }
 
 void List::printMarkedDocuments(){

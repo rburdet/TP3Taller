@@ -7,7 +7,7 @@ GenericFileIndexer::GenericFileIndexer(const string fileName,List* indexList) : 
 	this->format = fileName.substr(fileName.find('.')+1,fileName.size());
 	(this->file).open(fileName.c_str());
 	if (!file)
-		cerr<<"Error al parsear archivo "<<fileName<<endl;
+		cerr<<"Error al parsear archivo: "<<fileName<<endl;
 	this->indexList = indexList;
 }
 

@@ -51,15 +51,14 @@ int main(int argc, char* argv[]){
 
 
 	//Imprimir lista:
-	for ( aux=aList->first ; aux!= NULL ; aux = aux->getNextWord() ){
-		cout << setw(15)<<aux->getData() << " -> " ;
-		for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
-			cout << setw(10) << aux2->getData() << " -> " ;
-		}
-		cout <<endl<<setw(15)<< "|"<< endl;
-	}
-
-	printf("\n\n\n\n");
+//	for ( aux=aList->first ; aux!= NULL ; aux = aux->getNextWord() ){
+//		cout << setw(15)<<aux->getData() << " -> " ;
+//		for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
+//			cout << setw(10) << aux2->getData() << " -> " ;
+//		}
+//		cout <<endl<<setw(15)<< "|"<< endl;
+//	}
+//	printf("\n\n\n\n");
 	value = searcher->search();
 	//printf("\n\n\n\n");
 

@@ -38,6 +38,10 @@ class List{
 		void unmarkAll();
 		//Si solo tengo que buscar una palabra tengo que imprimir solo sus documentos
 		void printDocuments(const std::string word);
+		//Intersecta todos los documentos
+		void intersect(int numberOfWords,std::string &docs);
+		//Llena el string que se va a usar como intersectador
+		std::string fillIntersecter();
 };
 
 #endif

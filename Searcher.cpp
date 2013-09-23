@@ -37,25 +37,30 @@ int Searcher::search()const{
 		}
 		if (numberOfWords>1){
 			cout<<"busqueda:\""<<line<<"\""<<endl;
-			this->anIndexList->markDocuments();
+			//this->anIndexList->markDocuments();
+			string tmp = this->anIndexList->fillIntersecter();
+			if (tmp.size()>0)
+				this->anIndexList->intersect(numberOfWords,tmp);
 
-		printf("\n\n\n\n\n");
+
 			Node* aux;
 			Node* aux2;
 
-		//Imprimir lista:
-		for ( aux=anIndexList->first ; aux!= NULL ; aux = aux->getNextWord() ){
-			if (aux->isMarked()){
-				cout << setw(15)<<aux->getData() << " -> " ;
-				for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
-					if (aux2->isMarked())
-						cout << setw(10) << aux2->getData() << " -> " ;
-				}
-				cout <<endl<<setw(15)<< "|"<< endl;
-			}
-		}	
-		//this->anIndexList->printMarkedDocuments();
+//			printf("\n\n\n\n\n");
+//			//Imprimir lista:
+//			for ( aux=anIndexList->first ; aux!= NULL ; aux = aux->getNextWord() ){
+//				if (aux->isMarked()){
+//					cout << setw(15)<<aux->getData() << " -> " ;
+//					for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
+//						if (aux2->isMarked())
+//							cout << setw(10) << aux2->getData() << " -> " ;
+//					}
+//					cout <<endl<<setw(15)<< "|"<< endl;
+//				}
+//			}	
+			//this->anIndexList->printMarkedDocuments();
 			this->anIndexList->unmarkAll();
+
 		}else{
 			this->anIndexList->printDocuments(word);
 		}
