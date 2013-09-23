@@ -1,6 +1,7 @@
 #ifndef TAGGED_FILE_INDEXER_H
 #define TAGGED_FILE_INDEXER_H
 
+#include <string>
 #include "NormalFileIndexer.h"
 
 class TaggedFileIndexer : public NormalFileIndexer {
@@ -8,7 +9,8 @@ class TaggedFileIndexer : public NormalFileIndexer {
 		char openTag;
 		char closeTag;
 	public: 
-		TaggedFileIndexer(const std::string fileName, List* aList) : NormalFileIndexer(fileName, aList){};
+		TaggedFileIndexer(const std::string fileName, List* aList) :
+			NormalFileIndexer(fileName, aList){}
 		virtual void untag(std::string& line);
 		virtual void indexFile();
 };

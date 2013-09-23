@@ -1,6 +1,7 @@
+#include <string>
 #include "Indexer.h"
 
-using namespace std;
+using std::string;
 
 Indexer::Indexer(string fileList, List* aList){
 	this->indexList = aList;
@@ -18,7 +19,6 @@ void Indexer::index(){
 			delete anIndexer;
 		}
 	}while (file.size()!=0);
-	
 }
 
 string Indexer::getFileToIndex(){

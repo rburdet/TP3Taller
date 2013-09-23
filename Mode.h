@@ -10,12 +10,13 @@ class Mode{
 		const std::string modeName;
 		const int modeNumber;
 	public:
-		// En caso de extension a otros casos voy a tener que saber de que modo estamos hablando
+		// En caso de extension a otros casos voy a tener que saber 
+		// de que modo estamos hablando
 		Mode(const std::string name,const int num);
 		virtual const std::string getModeName()const;
 		virtual const int getModeNum()const;
-		virtual void print(List*)=0;
-		virtual ~Mode(){};
+		virtual void print(List* printList)=0;
+		virtual ~Mode(){}
 };
 
 #endif 

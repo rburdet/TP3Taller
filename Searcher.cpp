@@ -1,7 +1,13 @@
+#include <string>
 #include "Searcher.h"
-#include <iomanip>
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::endl;
+using std::cin;
+using std::stringstream;
+using std::istream;
+using std::ifstream;
 
 Searcher::Searcher(string inFile, List* aList,Mode* aMode){
 	anIndexList = aList;
@@ -43,24 +49,7 @@ int Searcher::search()const{
 			if (tmp.size()>0)
 				this->anIndexList->intersect(numberOfWords,tmp,aList);
 			this->openMode->print(aList);
-			//aList->printList();
 			this->anIndexList->unmarkAll();
-
-//			Node* aux;
-//			Node* aux2;
-//			printf("\n\n\n\n\n");
-//			//Imprimir lista:
-//			for ( aux=anIndexList->first ; aux!= NULL ; aux = aux->getNextWord() ){
-//				if (aux->isMarked()){
-//					cout << setw(15)<<aux->getData() << " -> " ;
-//					for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
-//						if (aux2->isMarked())
-//							cout << setw(10) << aux2->getData() << " -> " ;
-//					}
-//					cout <<endl<<setw(15)<< "|"<< endl;
-//				}
-//			}	
-			//this->anIndexList->printMarkedDocuments();
 		}else{
 			this->anIndexList->fill(word,aList);
 			this->openMode->print(aList);

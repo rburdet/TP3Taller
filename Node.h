@@ -10,11 +10,12 @@ class Node{
 		Node* nextDocument;
 		Node* nextWord;
 		const std::string data;
+
 	public:
 		//Un nodo se crea con sus punteros a NULL,no marcado y con una 
 		//informacion data que puede ser documento o palabra de una manera
 		//indistinta
-		Node(const std::string data);
+		explicit Node(const std::string data);
 		~Node();
 		//POST: devuelve puntero a proximo documento
 		Node* getNextDocument()const;

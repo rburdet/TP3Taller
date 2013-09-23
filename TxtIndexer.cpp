@@ -1,6 +1,7 @@
+#include <string>
 #include "TxtIndexer.h"
 
-using namespace std;
+using std::string;
 
 void TxtIndexer::indexFile(){
 	string line, rawWord,word;
@@ -18,7 +19,8 @@ void TxtIndexer::indexFile(){
 				}else{
 					//La palabra fue indexada pero no en este documento
 					if (this->indexList->searchDoc(word,this->compFileName) == NULL){
-						this->indexList->addDocument(this->indexList->searchWord(word),this->compFileName);
+						indexList->addDocument(indexList->searchWord(word)
+								,compFileName);
 					}
 				}		
 			}

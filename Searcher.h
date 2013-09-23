@@ -20,7 +20,6 @@ class Searcher{
 		//POST: Devuelve 1 si no existe el archivo o no se puede leer
 		//0 en caso contrario
 		int search()const;
-
 };
 
 #endif

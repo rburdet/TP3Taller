@@ -1,6 +1,9 @@
+#include <string>
 #include "TaggedFileIndexer.h"
 
-using namespace std;
+using std::string;
+using std::cin;
+using std::stringstream;
 
 void TaggedFileIndexer::untag(string& line){
 	string aux;
@@ -35,8 +38,9 @@ void TaggedFileIndexer::indexFile(){
 					this->indexList->addDocToEnd(this->compFileName);
 				}else{
 					//La palabra fue indexada pero no en este documento
-					if (this->indexList->searchDoc(word,this->compFileName) == NULL){
-						this->indexList->addDocument(this->indexList->searchWord(word),this->compFileName);
+					if (indexList->searchDoc(word,this->compFileName) == NULL){
+						indexList->addDocument(indexList->searchWord(word)
+								,compFileName);
 					}
 				}		
 			}

@@ -1,8 +1,12 @@
+#include <string>
 #include "GenericFileIndexer.h"
 
-using namespace std;
+using std::string;
+using std::cerr;
+using std::endl;
 
-GenericFileIndexer::GenericFileIndexer(const string fileName,List* indexList) : compFileName(fileName){
+GenericFileIndexer::GenericFileIndexer(const string fileName,List* indexList) :
+	compFileName(fileName){
 	this->redFileName = fileName.substr(0,fileName.find('.'));
 	this->format = fileName.substr(fileName.find('.')+1,fileName.size());
 	(this->file).open(fileName.c_str());
@@ -24,7 +28,7 @@ string GenericFileIndexer::toLower(const string in){
 	int dif = 'a'-'A';
 	char* out = (char*)calloc(1,sizeof(char)*in.size()+1);
 	unsigned i=0;
-	for ( i=0 ; i < in.size() ; i++){
+	for ( i=0 ; i < in.size() ; i++ ){
 		if (in[i]<='Z' && in[i]>='A')
 			out[i] = in[i]+dif;
 		else 

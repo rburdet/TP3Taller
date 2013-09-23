@@ -2,7 +2,6 @@
 #define PARSER_H
 
 #include <stdio.h>
-#include <string>
 
 //0 si estan todos 2 si hay problemas con -d
 //mode 1 es completo, 2 es resumen

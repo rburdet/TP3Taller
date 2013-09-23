@@ -1,6 +1,9 @@
+#include <string>
 #include "List.h"
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::endl;
 
 List::List(){
 	this->first=NULL;
@@ -9,11 +12,10 @@ List::List(){
 
 void List::addWord(const string word){
 	Node* auxNode = new Node(word);
-	if ( this->first==NULL ){
+	if (this->first==NULL){
 		this->first=auxNode;
 		this->actual=auxNode;
-	}
-	else{
+	}else{
 		this->actual->setNextWord(auxNode);
 		this->actual = auxNode;
 	}
@@ -24,25 +26,25 @@ void List::addDocToEnd(const string doc){
 	this->actual->setNextDocument(auxNode);
 }
 
-//para agregar un documento se llamara a 
-//List->addDocument(searchWord(palabra),documento)
-//el doc1 estara en aList->searchWord(string)->getNextDocument()
-void List::addDocument(Node* wordNode,string doc){
+	//para agregar un documento se llamara a 
+	//List->addDocument(searchWord(palabra),documento)
+	//el doc1 estara en aList->searchWord(string)->getNextDocument()
+void List::addDocument(Node* wN,string doc){
 	Node* auxNode = new Node(doc);
-	while((wordNode->getNextDocument())!=NULL){
-		wordNode->setNextDocument(wordNode->getNextDocument());
-		wordNode=wordNode->getNextDocument();
+	while((wN->getNextDocument())!=NULL){
+		wN->setNextDocument(wN->getNextDocument());
+		wN=wN->getNextDocument();
 	}
-	wordNode->setNextDocument(auxNode);
+	wN->setNextDocument(auxNode);
 }
 
 
 Node* List::searchWord(const string data){
 	if (this->first==NULL)
 		return NULL;
-	if (*this->first==data )
+	if ((*this->first)==data){
 		return this->first;
-	else{
+	}else{
 		Node* auxNode = this->first;
 		do {
 			auxNode = auxNode->getNextWord();
@@ -58,9 +60,9 @@ Node* List::searchDoc(const string word, const string doc){
 	if (this->searchWord(word)==NULL)
 		return NULL;
 	Node* auxNode = this->searchWord(word)->getNextDocument();
-	if ((*auxNode==doc))  
+	if ((*auxNode==doc)){
 		return (auxNode);
-	else{
+	}else{
 		do{
 			auxNode = auxNode->getNextDocument();
 			if (auxNode == NULL ) 
@@ -76,56 +78,14 @@ void List::markWord(const string word){
 		auxNode->markNode();
 }
 
-void List::markDocuments(){
-	Node* outW;		//outWord 
-	Node* inW;		//inWord
-	Node* outD;		//outDoc
-	Node* inD;		//inDoc
-	string files;
-	bool needMark;
-	//Para cada palabra
-	for (outW=this->first ; outW!=NULL; outW = outW->getNextWord() ){
-		//Si la estoy buscando
-		if (outW->isMarked())
-			//Para cada documento
-			for (outD = outW->getNextDocument() ; outD != NULL ; outD = outD->getNextDocument()) {
-				//Si esta marcado es porque ya lo encontre antes
-				needMark=false;
-				if (!outD->isMarked())
-				//Palabra a buscar 
-				for ( inW = outW ; inW != NULL ; inW = inW->getNextWord() ){
-					//if (inW->isMarked())
-						//Documento a comparar
-						for ( inD = inW->getNextDocument() ; inD != NULL ; inD = inD->getNextDocument()) {
-							if (outD->getData() == inD->getData()){
-								needMark=true;
-								//inD->markNode();
-								//if(outW->getData() != inW->getData()){
-									//cout << "puedo agregar : " << outD->getData() << " o el in: " << inD->getData() << endl;
-//									if (files.find_first_of(outD->getData())==string::npos){
-//										files.append(outD->getData());
-//										files.insert(files.end(),';');
-									//}
-								//}
-							}
-						}
-				}
-				if (needMark){
-					//outD->markNode();
-					cout << outD->getData() << endl;
-				}
-			}
-	}
-}
-
 string List::fillIntersecter(){
-	Node* wordNode;
-	Node* docNode;
+	Node* wN;
+	Node* dN;
 	string docs;
-	for ( wordNode=this->first ; wordNode!= NULL ; wordNode = wordNode->getNextWord() ){
-		if (wordNode->isMarked()){
-			for ( docNode=wordNode->getNextDocument() ; docNode != NULL ; docNode = docNode->getNextDocument() ){
-					docs.append(docNode->getData());
+	for ( wN=this->first ; wN!= NULL ; wN = wN->getNextWord() ){
+		if (wN->isMarked()){
+			for ( dN=wN->getNextDocument() ; dN != NULL ; dN = dN->getNextDocument() ){
+					docs.append(dN->getData());
 					docs.insert(docs.end(),',');
 			}
 		}
@@ -145,18 +105,16 @@ void List::intersect(int numberOfWords,string &docs,List* aList){
 		if (fpos != string::npos){
 			adoc = aux.substr(0,fpos);
 			npos=fpos;
-		}
-		else{
+		}else{
 			break;
 			//adoc = aux.substr(0,aux.size());
 			//npos=aux.size();
 		}
 		//cout << "adoc: " <<adoc<<endl;
 		//cout << "\t aux: \t" << aux << endl;
-		while ( ( wpos=aux.find(adoc,npos)) !=string::npos){
+		while ((wpos=aux.find(adoc,npos)) != string::npos){
 			times++;
 			npos = aux.find(',',wpos);
-			//cout << "\t times: "<<times <<"\t npos: "<<npos<<"\t wpos: "<<wpos<<"\t aux: "<<aux<<endl;
 			aux.erase(wpos,npos-wpos+1);
 		}
 		if (fpos != string::npos)
@@ -165,45 +123,47 @@ void List::intersect(int numberOfWords,string &docs,List* aList){
 			aList->addWord(adoc);
 		}
 	}
-
 }
 
 void List::printList()const{
 	Node* auxNode;
-	for ( auxNode = this->first ; auxNode!= NULL ; auxNode = auxNode->getNextWord()){
+	for ( auxNode = first ; auxNode!= NULL ; auxNode = auxNode->getNextWord() ){
 		cout << auxNode->getData()<<endl;
 	}
 }
 
 void List::printMarkedDocuments(){
-	Node* wordNode;
-	Node* docNode;
-	for ( wordNode = this->first ; wordNode != NULL ; wordNode=wordNode->getNextWord()){
-		if (wordNode->isMarked())
-		for ( docNode = wordNode->getNextDocument() ; docNode != NULL ; docNode = docNode->getNextDocument()){
-			if (docNode->isMarked())
-				cout << docNode->getData()<<endl;
+	Node* wN;
+	Node* dN;
+	for ( wN = this->first ; wN != NULL ; wN=wN->getNextWord() ){
+		if (wN->isMarked())
+		for ( dN = wN->getNextDocument() ; dN != NULL ;
+				dN = dN->getNextDocument() ){
+			if (dN->isMarked())
+				cout << dN->getData()<<endl;
 		}
 	}
-
 }
+
 void List::unmarkAll(){
-	Node* wordNode;
-	Node* docNode;
-	for ( wordNode = this->first ; wordNode != NULL ; wordNode = wordNode->getNextWord()){
-		for (docNode = wordNode->getNextDocument() ; docNode!=NULL ; docNode = docNode->getNextDocument()){
-			docNode->unmarkNode();
+	Node* wN;
+	Node* dN;
+	for ( wN = this->first ; wN != NULL ; wN = wN->getNextWord() ){
+		for ( dN = wN->getNextDocument() ; dN!=NULL ;
+						dN = dN->getNextDocument() ){
+				dN->unmarkNode();
+			}
+			wN->unmarkNode();
 		}
-		wordNode->unmarkNode();
 	}
-}
 
-void List::fill(const string word,List* aList){
-	cout << "busqueda:\""<<word<<"\""<<endl;
-	Node* wordNode = this->searchWord(word);
-	if (wordNode!=NULL){
-		Node* auxNode;
-		for ( auxNode= wordNode->getNextDocument() ; auxNode!=NULL ; auxNode = auxNode->getNextDocument() ){
+	void List::fill(const string word,List* aList){
+		cout << "busqueda:\""<<word<<"\""<<endl;
+		Node* wN = this->searchWord(word);
+		if (wN!=NULL){
+			Node* auxNode;
+		for ( auxNode= wN->getNextDocument() ; auxNode!=NULL ;
+				auxNode = auxNode->getNextDocument() ){
 			aList->addWord(auxNode->getData());
 		}
 	}
@@ -214,7 +174,7 @@ List::~List(){
 	Node* docToDestroy;
 	Node* aux;
 	wordToDestroy=this->first;
-	while (wordToDestroy != NULL ){
+	while (wordToDestroy != NULL){
 		this->actual = wordToDestroy->getNextWord();
 		docToDestroy=wordToDestroy->getNextDocument();
 		while ( docToDestroy != NULL ){

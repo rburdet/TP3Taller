@@ -1,4 +1,4 @@
-#include <iomanip>
+#include <string> 
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
@@ -13,7 +13,7 @@
 #include "Resumen.h"
 #include "Completo.h"
 
-using namespace std;
+using std::string;
 
 int main(int argc, char* argv[]){
 	int value;

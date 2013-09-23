@@ -5,8 +5,8 @@
 
 class Completo : public Mode {
 	public:
-		Completo() : Mode("completo",1){};
-		void print(List*);
+		Completo() : Mode("completo",1){}
+		void print(List* printList);
 };
 
 #endif

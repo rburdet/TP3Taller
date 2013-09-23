@@ -1,6 +1,7 @@
+#include <string>
 #include "Node.h"
 
-using namespace std;
+using std::string;
 
 Node::Node(const string adata) : data(adata){
 	this->nextDocument=NULL;

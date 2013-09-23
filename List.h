@@ -7,11 +7,11 @@
 class List{
 	//private:
 	public:
-		//TODO: CREO QUE NO SE USA -> todo anda y nunca se uso
-		//std::string data;
+		//Cualquier miembro que use la lista puede acceder a su primer posicion
+		//y a la actual
 		Node* first;
 		Node* actual;
-	public:
+
 		List();
 		~List();
 		//Agrego un documento al final de la ultima palabra que se agrego

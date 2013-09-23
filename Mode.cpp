@@ -1,6 +1,7 @@
+#include <string>
 #include "Mode.h"
 
-using namespace std;
+using std::string;
 
 Mode::Mode(const string mode,const int num) : modeName(mode), modeNumber(num){}
 
