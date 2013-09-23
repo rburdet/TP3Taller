@@ -17,17 +17,16 @@ FALTA:
 	NO OLVIDARME QUE LOS MIEMBROS DE LIST DEBEN SER PRIVADOS !! 
 	Borrar comentarios
 		
-	TESTEAR EL CASO EN QUE PASO UN ARCHIVO QUE NO EXISTE Y OTRO QUE NO TIENE FORMATO SOPORTADO
 
 PRUEBAS:
 																																rv							link	estado 	
-CP11pruebasTags	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries.txt											0	Entradas    Salidas     324				
-CP1resumenArchivo	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries.txt										0	Entradas    Salidas		314		
-CP2faltaArgumento	./tp																										2			    Salidas		315		
-CP3faltaListaDocs	./tp -m completo -d																							2	    	    Salidas		316		
-CP4noExisteQueries	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q noexiste.txt										1	Entradas    Salidas		317		
-CP5noExistenOFormatoDocs	./tp -d otroformato.fmt,noexiste.txt -q queries.txt													0	Entradas    Salidas		318		
-CP6queriesSinResultado	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries2.txt									0	Entradas    Salidas		319		
-CP7completo	./tp -m completo -d text2.txt,latextext2.tex,htmltext.html -q queriescompleto.txt									0	Entradas    Salidas		320		
-CP8resumenStdin	./tp -m resumen -d text.txt,latextext.tex,htmltext.html															0	Entradas    Salidas		321		
-CP9completoCombinado	./tp -d text2.txt,noexiste.txt,latextext2.tex,otroformato.fmt,htmltext.html -q queriescombinado.txt		0	Entradas    Salidas		322		
+CP11pruebasTags	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries.txt											0	Entradas    Salidas     324		paso		
+CP1resumenArchivo	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries.txt										0	Entradas    Salidas		314		paso
+CP2faltaArgumento	./tp																										2			    Salidas		315		paso
+CP3faltaListaDocs	./tp -m completo -d																							2	    	    Salidas		316		paso
+CP4noExisteQueries	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q noexiste.txt										1	Entradas    Salidas		317		paso
+CP5noExistenOFormatoDocs	./tp -d otroformato.fmt,noexiste.txt -q queries.txt													0	Entradas    Salidas		318		paso
+CP6queriesSinResultado	./tp -m resumen -d text.txt,latextext.tex,htmltext.html -q queries2.txt									0	Entradas    Salidas		319		paso
+CP7completo	./tp -m completo -d text2.txt,latextext2.tex,htmltext.html -q queriescompleto.txt									0	Entradas    Salidas		320		paso
+CP8resumenStdin	./tp -m resumen -d text.txt,latextext.tex,htmltext.html															0	Entradas    Salidas		321		paso
+CP9completoCombinado	./tp -d text2.txt,noexiste.txt,latextext2.tex,otroformato.fmt,htmltext.html -q queriescombinado.txt		0	Entradas    Salidas		322		paso

@@ -11,9 +11,12 @@ GenericFileIndexer* Factory::createIndexer(std::string fileName,List* list){
 		mySon = new HtmlIndexer(fileName,list);
 	else{
 		std::cerr << "Error al parsear archivo: "<<fileName << std::endl;
+		delete mySon;
 		mySon=NULL;
 	}
-	if ( (mySon!=NULL) && (!(mySon->isOpen())) )
+	if ( (mySon!=NULL) && (!(mySon->isOpen())) ){
+		delete mySon;
 		mySon=NULL;
+	}
 	return mySon;
 }

@@ -36,12 +36,15 @@ class List{
 		void printMarkedDocuments();
 		//Pone la lista en el estado inicial (todo desmarcado)
 		void unmarkAll();
+		//TODO: CAMBIAR ESTO
 		//Si solo tengo que buscar una palabra tengo que imprimir solo sus documentos
-		void printDocuments(const std::string word);
+		void fill(const std::string word,List* aList);
 		//Intersecta todos los documentos
-		void intersect(int numberOfWords,std::string &docs);
+		void intersect(int numberOfWords,std::string &docs,List* aList);
 		//Llena el string que se va a usar como intersectador
 		std::string fillIntersecter();
+		//imprime la lista
+		void printList()const;
 };
 
 #endif

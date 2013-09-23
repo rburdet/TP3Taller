@@ -9,7 +9,6 @@ class NormalFileIndexer: public GenericFileIndexer{
 		NormalFileIndexer(const std::string fileName,List* aList) : GenericFileIndexer(fileName, aList) {}
 		bool isNormalIndexable(const std::string)const;
 		virtual void indexFile()=0;
-
 };
 
 #endif

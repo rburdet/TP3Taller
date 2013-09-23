@@ -135,8 +135,8 @@ string List::fillIntersecter(){
 	return docs;
 }
 
-void List::intersect(int numberOfWords,string &docs){
-	int fpos,wpos,npos;
+void List::intersect(int numberOfWords,string &docs,List* aList){
+	size_t fpos,wpos,npos;
 	string adoc;
 	string aux = docs;
 	while(aux.size()>0){
@@ -161,10 +161,18 @@ void List::intersect(int numberOfWords,string &docs){
 		}
 		if (fpos != string::npos)
 			aux.erase(0,fpos+1);
-		if (times == numberOfWords)
-			cout << adoc << endl;
+		if (times == numberOfWords){
+			aList->addWord(adoc);
+		}
 	}
 
+}
+
+void List::printList()const{
+	Node* auxNode;
+	for ( auxNode = this->first ; auxNode!= NULL ; auxNode = auxNode->getNextWord()){
+		cout << auxNode->getData()<<endl;
+	}
 }
 
 void List::printMarkedDocuments(){
@@ -190,13 +198,13 @@ void List::unmarkAll(){
 	}
 }
 
-void List::printDocuments(const string word){
+void List::fill(const string word,List* aList){
 	cout << "busqueda:\""<<word<<"\""<<endl;
 	Node* wordNode = this->searchWord(word);
 	if (wordNode!=NULL){
 		Node* auxNode;
 		for ( auxNode= wordNode->getNextDocument() ; auxNode!=NULL ; auxNode = auxNode->getNextDocument() ){
-			cout<<auxNode->getData()<<endl;
+			aList->addWord(auxNode->getData());
 		}
 	}
 }

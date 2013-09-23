@@ -3,9 +3,10 @@
 
 using namespace std;
 
-Searcher::Searcher(string inFile, List* aList) {
+Searcher::Searcher(string inFile, List* aList,Mode* aMode){
 	anIndexList = aList;
 	this->fileName=inFile;
+	this->openMode=aMode;
 }
 
 int Searcher::search()const{
@@ -35,17 +36,18 @@ int Searcher::search()const{
 			//marco las palabras en la lista que matchean a la busqueda
 			this->anIndexList->markWord(word);
 		}
+		List* aList= new List();
 		if (numberOfWords>1){
 			cout<<"busqueda:\""<<line<<"\""<<endl;
-			//this->anIndexList->markDocuments();
 			string tmp = this->anIndexList->fillIntersecter();
 			if (tmp.size()>0)
-				this->anIndexList->intersect(numberOfWords,tmp);
+				this->anIndexList->intersect(numberOfWords,tmp,aList);
+			this->openMode->print(aList);
+			//aList->printList();
+			this->anIndexList->unmarkAll();
 
-
-			Node* aux;
-			Node* aux2;
-
+//			Node* aux;
+//			Node* aux2;
 //			printf("\n\n\n\n\n");
 //			//Imprimir lista:
 //			for ( aux=anIndexList->first ; aux!= NULL ; aux = aux->getNextWord() ){
@@ -59,11 +61,11 @@ int Searcher::search()const{
 //				}
 //			}	
 			//this->anIndexList->printMarkedDocuments();
-			this->anIndexList->unmarkAll();
-
 		}else{
-			this->anIndexList->printDocuments(word);
+			this->anIndexList->fill(word,aList);
+			this->openMode->print(aList);
 		}
+		delete aList;
 	}
 	//Si abri el archivo lo tengo que cerrar
 	if (needToCloseFile)

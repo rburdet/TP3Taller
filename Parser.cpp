@@ -2,9 +2,7 @@
 
 using namespace std;
 
-//TODO:
-//tener en cuenta extension de modos a otros modos
-char parseArguments(int argc, char* argv[],char &mode,int &posOfQ,int &posOfd){
+char parseArguments(int argc, char* argv[],int &mode,int &posOfQ,int &posOfd){
 	int i,j;
 	posOfQ=-1;
 	posOfd=-1;
@@ -18,7 +16,7 @@ char parseArguments(int argc, char* argv[],char &mode,int &posOfQ,int &posOfd){
 				if (argv[i][j+1]=='m'){
 					mode = 1;
 					modeName=string(argv[i+1]);
-					if (argv[i+1][0]!='-'){ 
+					if ( (argv[i+1][0]!='-') && (modeName.compare("completo")!=0)){ 
 							mode = 2;
 					}
 				}
