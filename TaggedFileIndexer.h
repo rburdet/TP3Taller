@@ -5,14 +5,16 @@
 #include "NormalFileIndexer.h"
 
 class TaggedFileIndexer : public NormalFileIndexer {
-	protected:
+	private:
 		char openTag;
 		char closeTag;
 	public: 
-		TaggedFileIndexer(const std::string fileName, List* aList) :
-			NormalFileIndexer(fileName, aList){}
+		TaggedFileIndexer(const std::string& fileName, List* aList,char oT,char cT) :
+			NormalFileIndexer(fileName, aList){
+				this->openTag=oT;
+				this->closeTag=cT;
+			}
 		virtual void untag(std::string& line);
-		virtual void indexFile();
 };
 
 #endif

@@ -20,10 +20,15 @@ class GenericFileIndexer{
 		//El estado una vez creado tiene como format a la extension del archivo
 		//a fileName al nombre SIN la extension
 		//y un file descriptor con el archivo abierto
-		GenericFileIndexer(const std::string fileName,List* indexList);
+		GenericFileIndexer(const std::string& fileName,List* indexList);
+		//Sirve para ver si el archivo sigue abierto
+		//POST: devuelve true si esta abierto, false en caso contrario
 		virtual bool isOpen();
-		static std::string toLower(const std::string inString);
+		//Transforma palabras a minusculas
+		static std::string toLower(const std::string& inString);
+		//Destruye el objeto padre
 		virtual ~GenericFileIndexer();
+		//Indexa el archivo sobre la lista 
 		virtual void indexFile()=0;
 };
 

@@ -1,23 +1,23 @@
 #include <string>
 #include "Factory.h"
 
-GenericFileIndexer* Factory::createIndexer(std::string fileName,List* list){
-	GenericFileIndexer* mySon = NULL;
+GenericFileIndexer* Factory::createIndexer(std::string& fileName,List* list){
+	GenericFileIndexer* indexer = NULL;
 	std::string extension = fileName.substr(fileName.find('.')+1,fileName.size());
 	if (extension.compare(GenericFileIndexer::toLower("Txt"))==0){
-		mySon = new TxtIndexer(fileName,list);
+		indexer = new NormalFileIndexer(fileName,list);
 	}else if (extension.compare(GenericFileIndexer::toLower("Tex"))==0){
-		mySon = new TexIndexer(fileName,list);
+		indexer = new TexIndexer(fileName,list);
 	}else if (extension.compare(GenericFileIndexer::toLower("Html"))==0){
-		mySon = new HtmlIndexer(fileName,list);
+		indexer = new HtmlIndexer(fileName,list);
 	}else{
 		std::cerr << "Error al parsear archivo: "<<fileName << std::endl;
-		delete mySon;
-		mySon=NULL;
+		delete indexer;
+		indexer=NULL;
 	}
-	if ( (mySon!=NULL) && (!(mySon->isOpen())) ){
-		delete mySon;
-		mySon=NULL;
+	if ( (indexer!=NULL) && (!(indexer->isOpen())) ){
+		delete indexer;
+		indexer=NULL;
 	}
-	return mySon;
+	return indexer;
 }

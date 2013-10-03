@@ -3,10 +3,12 @@
 
 #include "Mode.h"
 
+#define COMPLETOWORD "completo"
+#define COMPLETO 1
 class Completo : public Mode {
 	public:
-		Completo() : Mode("completo",1){}
-		void print(List* printList);
+		Completo() : Mode(COMPLETOWORD,COMPLETO){}
+		void print(List* printList)const;
 };
 
 #endif

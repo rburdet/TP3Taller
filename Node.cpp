@@ -3,7 +3,7 @@
 
 using std::string;
 
-Node::Node(const string adata) : data(adata){
+Node::Node(const string& adata) : data(adata){
 	this->nextDocument=NULL;
 	this->nextWord=NULL;
 	this->marked=false;
@@ -29,11 +29,11 @@ void Node::setNextWord(Node* next){
 	this->nextWord=next;
 }
 
-const string Node::getData()const {
+const string& Node::getData()const {
 	return data;
 }
 
-bool Node::operator == (const string doc){
+bool Node::operator == (const string& doc){
 	return (this->getData().compare(doc) == 0);
 }
 

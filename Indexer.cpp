@@ -16,6 +16,21 @@ void Indexer::index(){
 			GenericFileIndexer* anIndexer = Factory::createIndexer(file,indexList);
 			if (anIndexer!=NULL)
 				anIndexer->indexFile();
+			Node* aux;
+	Node* aux2;
+
+	//Node* aux3;
+	//Node* aux4;
+
+
+	//Imprimir lista:
+	//for ( aux=aList->first ; aux!= NULL ; aux = aux->getNextWord() ){
+	//	cout << setw(15)<<aux->getData() << " -> " ;
+	//	for (aux2=aux->getNextDocument() ; aux2 != NULL ; aux2 = aux2->getNextDocument() ){
+	//		cout << setw(10) << aux2->getData() << " -> " ;
+	//	}
+	//	cout <<endl<<setw(15)<< "|"<< endl;
+	//}
 			delete anIndexer;
 		}
 	}while (file.size()!=0);

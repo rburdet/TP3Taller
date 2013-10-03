@@ -5,46 +5,43 @@
 #include "Node.h"
 
 class List{
-	//private:
-	public:
-		//Cualquier miembro que use la lista puede acceder a su primer posicion
-		//y a la actual
+	private:
 		Node* first;
 		Node* actual;
 
+	public:
 		List();
 		~List();
+		//Devuelve el puntero al primer nodo
+		Node* getFirst();
 		//Agrego un documento al final de la ultima palabra que se agrego
-		void addDocToEnd(const std::string doc);
+		void addDocToEnd(const std::string& doc);
 		//Agrego un documento en la palabra indicada por wordNode
 		void addDocument(Node* wordNode,std::string doc);
 		//Agrego una palabra con el documento en el que aparecio
-		void addWord(const std::string doc);
+		void addWord(const std::string& doc);
 		//Busco palabra por palabra hasta que data matchea con la palabra en 
 		//la lista. 
 		//POST: devuelve el nodo que matcheo
-		Node* searchWord(const std::string data);
+		Node* searchWord(const std::string& data);
 		//Para la palabra indicada por word busco el documento doc. 
 		//POST: devuelve el nodo que matcheo para un documento en una palabra
-		Node* searchDoc(const std::string word,const std::string doc);
+		Node* searchDoc(const std::string& word,const std::string& doc);
 		//Marca las palabras que se quieren en una busqueda para luego hacer
 		//la interseccion de sus documentos
-		void markWord(const std::string word);
-		//Marca los documentos que se intersectan
-		void markDocuments();
-		//Imprime los documetnos marcados
-		void printMarkedDocuments();
+		void markWord(const std::string& word);
 		//Pone la lista en el estado inicial (todo desmarcado)
 		void unmarkAll();
-		//TODO: CAMBIAR ESTO
-		//Si solo tengo que buscar una palabra tengo que imprimir solo sus documentos
-		void fill(const std::string word,List* aList);
-		//Intersecta todos los documentos
-		void intersect(int numberOfWords,std::string &docs,List* aList);
-		//Llena el string que se va a usar como intersectador
-		std::string fillIntersecter();
-		//imprime la lista
-		void printList()const;
+		//llena aList con los documentos que luego voy a imprimir
+		//Esta version es una version mas sencilla que fillList
+		void fill(const std::string& word,List* aList);
+		//llena la lista con todos los documentos marcados
+		void fillList(List* aList);
+		//Realiza la interseccion entre documentos
+		//La interseccion es correcta cuando la cantidad de veces que aparece
+		//el documento es igual a numberOfWords que representa la cantidad 
+		//de palabras que se estan buscando
+		void intersect(int numberOfWords,List* filledList,List* aList);
 };
 
 #endif

@@ -15,14 +15,14 @@ class Node{
 		//Un nodo se crea con sus punteros a NULL,no marcado y con una 
 		//informacion data que puede ser documento o palabra de una manera
 		//indistinta
-		explicit Node(const std::string data);
+		explicit Node(const std::string& data);
 		~Node();
 		//POST: devuelve puntero a proximo documento
 		Node* getNextDocument()const;
 		//POST: devuelve puntero a proxima palabra
 		Node* getNextWord()const;
 		//POST: devuelve los datos en el nodo
-		const std::string getData()const;
+		const std::string& getData()const;
 		//POST: setea como siguiente palabra al nodo next
 		void setNextWord(Node* next);
 		//POST: setea como siguiente documento al nodo next
@@ -31,7 +31,7 @@ class Node{
 		//Uso: *NODO==data.
 		//POST: Devuelve true si el dato contenido en el nodo y data son iguales
 		//false en otro caso
-		bool operator ==(const std::string data);
+		bool operator ==(const std::string& data);
 		//Si un nodo esta marcado quiere decir que me interesa para la busqueda
 		//Un nodo puede estar marcado si: 
 		//	La palabra que contiene es relevante a la busqueda

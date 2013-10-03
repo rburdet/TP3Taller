@@ -9,7 +9,7 @@ using std::stringstream;
 using std::istream;
 using std::ifstream;
 
-Searcher::Searcher(string inFile, List* aList,Mode* aMode){
+Searcher::Searcher(const string& inFile, List* aList,Mode* aMode){
 	anIndexList = aList;
 	this->fileName=inFile;
 	this->openMode=aMode;
@@ -20,7 +20,7 @@ int Searcher::search()const{
 	ifstream inputFile;
 	istream* in = &cin;
 	int numberOfWords; 
-	bool needToCloseFile=false;
+	//bool needToCloseFile=false;
 	//Si tengo un archivo intento abrirlo
 	if (this->fileName!=""){
 		inputFile.open(this->fileName.c_str());
@@ -29,7 +29,7 @@ int Searcher::search()const{
 			return 1;
 		}else{
 			in = &inputFile;
-			needToCloseFile=true;
+			//needToCloseFile=true;
 		}
 	}
 	//Leo archivo linea por linea
@@ -42,23 +42,20 @@ int Searcher::search()const{
 			//marco las palabras en la lista que matchean a la busqueda
 			this->anIndexList->markWord(word);
 		}
-		List* aList= new List();
+		List aList;
 		if (numberOfWords>1){
 			cout<<"busqueda:\""<<line<<"\""<<endl;
-			string tmp = this->anIndexList->fillIntersecter();
-			if (tmp.size()>0)
-				this->anIndexList->intersect(numberOfWords,tmp,aList);
-			this->openMode->print(aList);
+			List inList;
+			this->anIndexList->fillList(&inList);
+			this->anIndexList->intersect(numberOfWords,&inList,&aList);
+			this->openMode->print(&aList);
 			this->anIndexList->unmarkAll();
 		}else{
-			this->anIndexList->fill(word,aList);
-			this->openMode->print(aList);
+			cout << "busqueda:\""<<word<<"\""<<endl;
+			this->anIndexList->fill(word,&aList);
+			this->openMode->print(&aList);
 		}
-		delete aList;
 	}
-	//Si abri el archivo lo tengo que cerrar
-	if (needToCloseFile)
-		inputFile.close();
 	return 0;
 }
 

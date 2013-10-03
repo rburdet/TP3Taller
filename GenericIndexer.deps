@@ -1,3 +1,0 @@
-GenericIndexer.o GenericIndexer.deps : GenericIndexer.cpp GenericIndexer.h
-
-GenericIndexer.h:

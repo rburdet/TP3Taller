@@ -13,35 +13,34 @@
 #include "Resumen.h"
 #include "Completo.h"
 
+#define RESUMEN 2
+#define COMPLETO 1
 using std::string;
 
 int main(int argc, char* argv[]){
 	int value;
-	int mode=1;
+	int mode=COMPLETO;
 	int posQ,posD;
 	string queries="";
 	value = parseArguments(argc,argv,mode,posQ,posD);
 	if (value)
 		return value;
-	List* aList = new List();
+	List aList;
 	Mode* openMode=NULL;
 	switch(mode){
-		case 1:
+		case COMPLETO:
 			openMode = new Completo();
 			break;
-		case 2:
+		case RESUMEN:
 			openMode = new Resumen();
 			break;
 	}
-	Indexer* indexer = new Indexer(string(argv[posD]),aList);
-	indexer->index();
-	delete indexer;
+	Indexer indexer(string(argv[posD]),&aList);
+	indexer.index();
 	if (posQ>1)
 		queries=string(argv[posQ]);
-	Searcher* searcher = new Searcher(queries,aList,openMode);
-	value = searcher->search();
-	delete aList;
-	delete searcher;
+	Searcher searcher(queries,&aList,openMode);
+	value = searcher.search();
 	delete openMode;
 return value;
 }

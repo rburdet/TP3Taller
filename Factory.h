@@ -4,13 +4,16 @@
 #include <iostream>
 #include <string>
 #include "GenericFileIndexer.h"
-#include "TxtIndexer.h"
-#include "HtmlIndexer.h"
 #include "TexIndexer.h"
+#include "HtmlIndexer.h"
 #include "List.h"
+
+//Clase usada para crear instancias de otras clases siguiendo un patron
+//Factory
 class Factory{
 	public:
-		static GenericFileIndexer* createIndexer(std::string fileName, List* list);
+		//Crea un heredero de GenericFileIndexer dependiendo de la extension
+		static GenericFileIndexer* createIndexer(std::string& fileName, List* list);
 };
 
 

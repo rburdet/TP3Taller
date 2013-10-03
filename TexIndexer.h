@@ -4,12 +4,14 @@
 #include <string>
 #include "TaggedFileIndexer.h"
 
+//La siguiente clase se utilizara para tratar archivos .tex 
+
 class TexIndexer : public TaggedFileIndexer {
 	public: 
-		TexIndexer(const std::string fileName, List* aList) :
-			TaggedFileIndexer(fileName, aList){
-			this->openTag='{';
-			this->closeTag='}';
+		//Contructor que llama al constructor de su clase padre 
+		//Le pasa como parametros los caracteres de apertura y cierre de tags
+		TexIndexer(const std::string& fileName, List* aList) :
+			TaggedFileIndexer(fileName, aList,'{','}'){
 		}
 };
 

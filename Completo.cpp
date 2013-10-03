@@ -6,12 +6,12 @@ using std::cout;
 using std::endl;
 using std::ifstream;
 
-void Completo::print(List* printList){
+void Completo::print(List* printList)const{
 	char times;
 	string fileName;
 	string line;
 	Node* aux;
-	for ( aux = printList->first ; aux != NULL ; aux = aux->getNextWord() ){
+	for ( aux = printList->getFirst() ; aux != NULL ; aux = aux->getNextWord() ){
 		times=0;
 		fileName= aux->getData();
 		cout << fileName << endl;
